@@ -10,3 +10,8 @@ make install
 make
 make install
 ```
+
+#### See also
+
+- https://wwwmpa.mpa-garching.mpg.de/gadget/gadget-list/0432.html
+- https://wwwmpa.mpa-garching.mpg.de/gadget/gadget-list/0171.html
