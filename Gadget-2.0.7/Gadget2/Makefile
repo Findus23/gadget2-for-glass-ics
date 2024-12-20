@@ -19,7 +19,7 @@ OPT   +=  -DWALLCLOCK
 
 
 #--------------------------------------- TreePM Options
-OPT   +=  -DPMGRID=128
+OPT   +=  -DPMGRID=512
 #OPT   +=  -DPLACEHIGHRESREGION=3
 #OPT   +=  -DENLARGEREGION=1.2
 #OPT   +=  -DASMTH=1.25
@@ -27,8 +27,8 @@ OPT   +=  -DPMGRID=128
 
 
 #--------------------------------------- Single/Double Precision
-#OPT   +=  -DDOUBLEPRECISION      
-#OPT   +=  -DDOUBLEPRECISION_FFTW      
+OPT   +=  -DDOUBLEPRECISION      
+OPT   +=  -DDOUBLEPRECISION_FFTW      
 
 
 #--------------------------------------- Time integration options
@@ -68,7 +68,7 @@ OPT   +=  -DHAVE_HDF5
 
 
 #--------------------------------------- Glass making
-#OPT   +=  -DMAKEGLASS=262144
+OPT   +=  -DMAKEGLASS=16777216
 
 
 #----------------------------------------------------------------------
@@ -101,13 +101,13 @@ SYSTYPE="MPA"
 ifeq ($(SYSTYPE),"MPA")
 CC       =  mpicc   
 OPTIMIZE =  -O3 -Wall
-GSL_INCL =  -I/usr/common/pdsoft/include
+GSL_INCL =  -I/usr/common/pdsoft/include -I /usr/include/hdf5/serial  
 GSL_LIBS =  -L/usr/common/pdsoft/lib  -Wl,"-R /usr/common/pdsoft/lib"
-FFTW_INCL= 
-FFTW_LIBS= 
+FFTW_INCL= -I /home/lukas/glass-test/fftw_prefix/include 
+FFTW_LIBS= -L /home/lukas/glass-test/fftw_prefix/lib 
 MPICHLIB =
-HDF5INCL =  
-HDF5LIB  =  -lhdf5 -lz 
+HDF5INCL = -DH5_USE_16_API 
+HDF5LIB  =  -lhdf5 -lz -L /usr/lib/x86_64-linux-gnu/hdf5/serial/
 endif
 
 
